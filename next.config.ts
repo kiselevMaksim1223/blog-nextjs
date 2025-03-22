@@ -5,6 +5,18 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'jsonplaceholder.typicode.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'via.placeholder.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos'
+      },
+      {
+        protocol: 'https',
+        hostname: 'placeholder.rocks'
       }
     ]
   }

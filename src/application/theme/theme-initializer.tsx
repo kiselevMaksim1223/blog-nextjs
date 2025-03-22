@@ -1,15 +1,29 @@
 'use client'
 
+import { useLayoutEffect } from 'react'
+
+import Cookies from 'js-cookie'
+
 import useThemeStore from '@shared/model/useThemeStore'
-import { useEffect } from 'react'
 
 export const ThemeInitializer = () => {
-  const { theme } = useThemeStore()
+  const theme = useThemeStore(state => state.theme)
+  const toggleTheme = useThemeStore(state => state.toggleTheme)
 
-  useEffect(() => {
-    const savedTheme =
-      (localStorage.getItem('theme') as 'light' | 'dark') || 'light'
-    document.documentElement.setAttribute('data-theme', savedTheme)
+  useLayoutEffect(() => {
+    // const savedTheme = localStorage.getItem('theme') as 'light' | 'dark'
+    const savedTheme = Cookies.get('theme') as 'light' | 'dark'
+
+    if (savedTheme) {
+      document.documentElement.classList.add(savedTheme)
+      toggleTheme(savedTheme)
+    } else {
+      document.documentElement.classList.add(theme || '')
+    }
+
+    return () => {
+      document.documentElement.classList.remove('light', 'dark')
+    }
   }, [theme])
 
   return null
