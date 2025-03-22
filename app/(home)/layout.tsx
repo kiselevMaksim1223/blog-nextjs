@@ -1,15 +1,19 @@
+import { Fragment, ReactNode } from 'react'
+
+import { cookies } from 'next/headers'
+
 import { Header } from '@features/header'
-import { ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
 }
 
-export default function HomeLayout({ children }: Props) {
+export default async function HomeLayout({ children }: Props) {
+  const theme = (await cookies()).get('theme')?.value as 'light' | 'dark'
   return (
-    <main className='dark:bg-gray-900" container mx-auto min-h-screen bg-gray-100'>
-      <Header />
-      {children}
-    </main>
+    <Fragment>
+      <Header initialTheme={theme} />
+      <main className={'container mx-auto min-h-screen pt-18'}>{children}</main>
+    </Fragment>
   )
 }

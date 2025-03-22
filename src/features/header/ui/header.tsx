@@ -1,31 +1,37 @@
 'use client'
 
-import useThemeStore from '@shared/model/useThemeStore'
-import { useEffect } from 'react'
+import Link from 'next/link'
 
-export const Header = () => {
+import useThemeStore from '@shared/model/useThemeStore'
+
+type Props = {
+  initialTheme: 'light' | 'dark'
+}
+
+export const Header = ({ initialTheme }: Props) => {
   const { theme, toggleTheme } = useThemeStore()
 
-  // При изменении темы добавляем/удаляем класс `dark` на элемент `html`
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [theme])
+  const displayedTheme = theme || initialTheme
 
   return (
-    <header className='bg-white p-4 shadow-md dark:bg-gray-800'>
-      <div className='container mx-auto flex items-center justify-between'>
-        <h1 className='text-xl font-bold text-gray-900 dark:text-white'>
-          My Blog
-        </h1>
+    <header
+      className={
+        'fixed z-10 h-18 w-full rounded-b-lg bg-white p-4 shadow-md dark:bg-gray-800'
+      }
+    >
+      <div className={'container mx-auto flex items-center justify-between'}>
+        <Link href={'/'}>
+          <h1 className={'text-xl font-bold text-gray-900 dark:text-white'}>
+            My Blog
+          </h1>
+        </Link>
         <button
-          onClick={toggleTheme}
-          className='rounded-lg bg-gray-200 p-2 text-gray-800 dark:bg-gray-700 dark:text-white'
+          className={
+            'rounded-lg bg-gray-200 p-2 text-gray-800 hover:cursor-pointer dark:bg-gray-700 dark:text-white'
+          }
+          onClick={() => toggleTheme(theme === 'light' ? 'dark' : 'light')}
         >
-          {theme === 'light' ? '🌙' : '☀️'}
+          {displayedTheme === 'light' ? '🌙' : '☀️'}
         </button>
       </div>
     </header>
