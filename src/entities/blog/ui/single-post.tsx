@@ -12,8 +12,7 @@ export const SinglePost = ({ post }: Props) => {
   return (
     <div
       className={classNames(
-        'overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800',
-        'mx-auto'
+        'mx-auto overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800'
       )}
     >
       <div className={classNames('relative aspect-video w-full')}>
@@ -30,7 +29,7 @@ export const SinglePost = ({ post }: Props) => {
         />
       </div>
 
-      <div className={classNames('p-4 sm:p-6 lg:p-8')}>
+      <div className={classNames('p-4', 'sm:p-6', 'lg:p-8')}>
         <h1
           className={classNames(
             'mb-4 text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl dark:text-white',
@@ -42,8 +41,7 @@ export const SinglePost = ({ post }: Props) => {
 
         <p
           className={classNames(
-            'mb-6 text-sm text-gray-500 dark:text-gray-400',
-            'italic'
+            'mb-6 text-sm text-gray-500 italic dark:text-gray-400'
           )}
         >
           Published on {new Date().toLocaleDateString()}

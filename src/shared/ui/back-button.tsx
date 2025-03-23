@@ -9,8 +9,7 @@ export const BackButton = () => {
   return (
     <button
       className={classNames(
-        'flex cursor-pointer items-center space-x-2 text-lg text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white',
-        'mb-8'
+        'mb-8 flex cursor-pointer items-center space-x-2 text-lg text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white'
       )}
       onClick={back}
     >

@@ -10,6 +10,23 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
+export const generateMetadata = async ({ params }: BlogPostPageProps) => {
+  const { slug } = await params
+  const post = await fetchPostBySlug(slug)
+
+  if (!post) {
+    return {
+      title: 'Post not found',
+      description: 'The post you are looking for does not exist.'
+    }
+  }
+
+  return {
+    title: 'Blog post - ' + post.id,
+    description: post.body
+  }
+}
+
 export default async function SinglePostPage({ params }: BlogPostPageProps) {
   const { slug } = await params
   const post = await fetchPostBySlug(slug)
@@ -19,7 +36,7 @@ export default async function SinglePostPage({ params }: BlogPostPageProps) {
   }
 
   return (
-    <div className={classNames('container mx-auto px-4 py-6', 'sm: lg:py-8')}>
+    <div className={classNames('container mx-auto px-4 py-6', 'lg:py-8')}>
       <BackButton />
       <SinglePost post={post} />
     </div>

@@ -14,53 +14,56 @@ export const PostItem = ({ post }: Props) => {
     <Link className={'block'} href={`/blog/${post.id}`}>
       <div
         className={classNames(
-          'group relative overflow-hidden rounded-lg shadow-lg transition-shadow duration-300 hover:shadow-xl',
-          'bg-white dark:bg-gray-800'
+          'group relative grid grid-cols-[1fr] overflow-hidden rounded-lg bg-white shadow-lg transition-shadow duration-300 hover:shadow-xl',
+          'dark:bg-gray-800',
+          'lg:grid-cols-[1fr_2fr]'
         )}
       >
         <div
           className={classNames(
-            'relative w-full overflow-hidden',
-            'h-48 sm:h-64'
+            'relative h-48 w-full overflow-hidden',
+            'sm:h-64'
           )}
         >
           <Image
             alt={post.title}
             fill
+            priority={post.id < 3}
+            quality={65}
+            sizes={'100%'}
             src={post.imageUrl}
             className={classNames(
-              'object-cover transition-transform duration-300',
-              'group-hover:scale-105'
+              'object-cover',
+              'transition-transform duration-300 group-hover:scale-105'
             )}
           />
           <div
             className={
-              'absolute inset-0 bg-gradient-to-t from-black/50 to-transparent'
+              'absolute inset-0 bg-gradient-to-t from-black/30 to-transparent'
             }
           />
         </div>
-        <div className={classNames('p-4 sm:p-6')}>
+        <div className={classNames('flex flex-col p-4', 'sm:p-6')}>
           <h2
             className={classNames(
-              'mb-2 font-bold text-gray-900 dark:text-white',
-              'text-xl sm:text-2xl'
+              'text-xl font-bold text-gray-900 dark:text-white',
+              'sm:text-2xl'
             )}
           >
             {post.title}
           </h2>
           <p
             className={classNames(
-              'line-clamp- text-gray-600 dark:text-gray-300',
-              'text-sm sm:text-base'
+              'line-clamp-1 text-sm text-gray-600 dark:text-gray-300',
+              'sm:text-base'
             )}
           >
             {post.body}
           </p>
           <div
             className={classNames(
-              'mt-4 flex justify-between',
-              'flex-col sm:flex-row',
-              'gap-4'
+              'mt-auto flex flex-col items-end justify-between gap-4 pt-3',
+              'sm:flex-row'
             )}
           >
             <span className={'text-sm text-gray-500 dark:text-gray-400'}>
@@ -68,8 +71,9 @@ export const PostItem = ({ post }: Props) => {
             </span>
             <button
               className={classNames(
-                'hover: cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-700',
-                'w-full text-center sm:w-auto'
+                'w-full cursor-pointer rounded-lg bg-blue-600 px-4 py-2 text-center text-white',
+                'transition-colors duration-300 hover:bg-blue-700',
+                'sm:w-auto'
               )}
             >
               Read More

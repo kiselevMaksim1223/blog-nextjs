@@ -2,6 +2,8 @@
 
 import Link from 'next/link'
 
+import classNames from 'classnames'
+
 import useThemeStore from '@shared/model/useThemeStore'
 
 type Props = {
@@ -15,13 +17,23 @@ export const Header = ({ initialTheme }: Props) => {
 
   return (
     <header
-      className={
-        'fixed z-10 h-18 w-full rounded-b-lg bg-white p-4 shadow-md dark:bg-gray-800'
-      }
+      className={classNames(
+        'fixed z-10 h-18 w-full rounded-b-lg bg-white p-4 shadow-md',
+        'dark:bg-gray-800'
+      )}
     >
-      <div className={'container mx-auto flex items-center justify-between'}>
+      <div
+        className={
+          'container mx-auto flex max-w-7xl items-center justify-between'
+        }
+      >
         <Link href={'/'}>
-          <h1 className={'text-xl font-bold text-gray-900 dark:text-white'}>
+          <h1
+            className={classNames(
+              'text-xl font-bold text-gray-900',
+              'dark:text-white'
+            )}
+          >
             My Blog
           </h1>
         </Link>

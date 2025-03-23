@@ -13,7 +13,9 @@ export default async function HomeLayout({ children }: Props) {
   return (
     <Fragment>
       <Header initialTheme={theme} />
-      <main className={'container mx-auto min-h-screen pt-18'}>{children}</main>
+      <main className={'container mx-auto min-h-screen max-w-7xl pt-18'}>
+        {children}
+      </main>
     </Fragment>
   )
 }

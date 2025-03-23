@@ -1,4 +1,5 @@
 export { fetchPostBySlug, fetchPosts } from './api/posts'
+export { useLoadMorePosts } from './hooks/useLoadMorePosts'
 export { useBlogStore } from './model/useBlogStore'
 export type { PostsResponse, PostWithImage } from './types/posts'
 export { PostItem } from './ui/post-item'

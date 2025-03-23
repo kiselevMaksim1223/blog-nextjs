@@ -11,14 +11,13 @@ export const ThemeInitializer = () => {
   const toggleTheme = useThemeStore(state => state.toggleTheme)
 
   useLayoutEffect(() => {
-    // const savedTheme = localStorage.getItem('theme') as 'light' | 'dark'
     const savedTheme = Cookies.get('theme') as 'light' | 'dark'
 
     if (savedTheme) {
       document.documentElement.classList.add(savedTheme)
       toggleTheme(savedTheme)
     } else {
-      document.documentElement.classList.add(theme || '')
+      document.documentElement.classList.add(theme || 'light')
     }
 
     return () => {
