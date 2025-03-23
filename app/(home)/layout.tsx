@@ -9,7 +9,8 @@ type Props = {
 }
 
 export default async function HomeLayout({ children }: Props) {
-  const theme = (await cookies()).get('theme')?.value as 'light' | 'dark'
+  const theme =
+    ((await cookies()).get('theme')?.value as 'light' | 'dark') || 'light'
   return (
     <Fragment>
       <Header initialTheme={theme} />

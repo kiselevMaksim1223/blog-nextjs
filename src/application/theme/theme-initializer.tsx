@@ -18,6 +18,7 @@ export const ThemeInitializer = () => {
       toggleTheme(savedTheme)
     } else {
       document.documentElement.classList.add(theme || 'light')
+      toggleTheme(theme || 'light')
     }
 
     return () => {

@@ -39,7 +39,7 @@ export const Header = ({ initialTheme }: Props) => {
         </Link>
         <button
           className={
-            'rounded-lg bg-gray-200 p-2 text-gray-800 hover:cursor-pointer dark:bg-gray-700 dark:text-white'
+            'h-10 w-10 rounded-lg bg-gray-200 p-2 text-gray-800 hover:cursor-pointer dark:bg-gray-700 dark:text-white'
           }
           onClick={() => toggleTheme(theme === 'light' ? 'dark' : 'light')}
         >

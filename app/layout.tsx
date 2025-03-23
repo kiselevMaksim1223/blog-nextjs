@@ -16,7 +16,7 @@ interface LayoutProps {
 const inter = Inter({ subsets: ['latin'] })
 
 export default async function Layout({ children }: LayoutProps) {
-  const theme = (await cookies()).get('theme')?.value
+  const theme = (await cookies()).get('theme')?.value || 'light'
   return (
     <html className={theme} lang={'en'}>
       <ThemeInitializer />
