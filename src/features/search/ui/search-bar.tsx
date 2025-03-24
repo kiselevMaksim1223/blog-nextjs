@@ -1,11 +1,9 @@
 'use client'
-
 import { useEffect, useRef } from 'react'
 
 import classNames from 'classnames'
 
-import { useBlogStore } from '@entities/blog'
-import { useFetchPosts } from '@entities/blog/hooks/useFetchPosts'
+import { useBlogStore, useFetchPosts } from '@entities/blog'
 
 import { useDebounce } from '@shared/hooks/useDebounce'
 
@@ -55,7 +53,7 @@ export const SearchBar = () => {
         />
         <button
           className={classNames(
-            'hover:text-gray-500 focus:outline-none',
+            'hover:text-gray-500 focus-visible:outline-blue-500',
             'cursor-pointer px-2 text-gray-400',
             'dark:text-gray-500 dark:hover:text-gray-400'
           )}

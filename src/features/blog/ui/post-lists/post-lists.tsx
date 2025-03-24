@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import classNames from 'classnames'
 
 import {
+  PostItem,
   type PostWithImage,
   useBlogStore,
   useLoadMorePosts
 } from '@entities/blog'
-import { PostItem } from '@entities/blog/ui/post-item'
 
 import { InfiniteScrollTrigger } from '@shared/ux/infinite-scroll-trigger'
 import { ListRenderer } from '@shared/ux/list-renderer'

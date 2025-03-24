@@ -49,9 +49,8 @@ export const SinglePost = ({ post }: Props) => {
 
         <div
           className={classNames(
-            'text-gray-600 dark:text-gray-300',
-            'text-base sm:text-lg lg:text-xl',
-            'space-y-4 leading-relaxed'
+            'space-y-4 text-base leading-relaxed text-gray-600 dark:text-gray-300',
+            'sm:text-lg lg:text-xl'
           )}
         >
           {post.body.split('\n').map((paragraph, index) => (
